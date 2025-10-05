@@ -1,0 +1,10 @@
+{% extends 'inicio/inicio.html' %}
+{% block section %}
+  <h2>Actualizar Método de Pago</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Actualizar</button>
+  </form>
+  <a href="{% url 'bastet:listar-metodos' %}">Volver</a>
+{% endblock %}

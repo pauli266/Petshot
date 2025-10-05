@@ -1,0 +1,16 @@
+{% extends 'inicio/inicio.html' %}
+{% block section %}
+  <h2>Métodos de Pago</h2>
+  <a href="{% url 'bastet:crear-metodo' %}">Nuevo método</a>
+  <ul>
+    {% for metodo in metodos_pago %}
+      <li>
+        {{ metodo.nombre }} |
+        <a href="{% url 'bastet:actualizar-metodo' metodo.pk %}">Editar</a> |
+        <a href="{% url 'bastet:eliminar-metodo' metodo.pk %}">Eliminar</a>
+      </li>
+    {% empty %}
+      <li>No hay métodos de pago.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

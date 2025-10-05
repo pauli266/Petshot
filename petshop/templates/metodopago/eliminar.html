@@ -1,0 +1,10 @@
+{% extends 'inicio/inicio.html' %}
+{% block section %}
+  <h2>Eliminar Método de Pago</h2>
+  <p>¿Eliminar <strong>{{ object.nombre }}</strong>?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+  </form>
+  <a href="{% url 'bastet:listar-metodos' %}">Cancelar</a>
+{% endblock %}

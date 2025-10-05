@@ -1,0 +1,10 @@
+{% extends 'inicio/inicio.html' %}
+{% block section %}
+  <h1>Eliminar Producto</h1>
+  <p>¿Estás seguro que quieres eliminar el producto "{{ object.producto }}"?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmar eliminación</button>
+  </form>
+  <a href="{% url 'bastet:list-bastet' %}">Cancelar</a>
+{% endblock %}

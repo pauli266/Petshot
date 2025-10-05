@@ -1,0 +1,23 @@
+{% extends 'inicio/inicio.html' %}
+{% block section %}
+  <h2>Lista de Productos</h2>
+  <a href="{% url 'bastet:crear-bastet' %}">Nuevo producto</a>
+  <ul>
+    {% for producto in bastet %}
+      <li>
+        <strong>{{ producto.producto }}</strong> - ${{ producto.precio }} - Stock: {{ producto.stock }} - Contacto: {{ producto.contacto }}<br>
+        Métodos de pago:
+        {% for metodo in producto.metodos_pago.all %}
+          {{ metodo.nombre }}{% if not forloop.last %}, {% endif %}
+        {% empty %}
+          Ninguno
+        {% endfor %}
+        <br>
+        <a href="{% url 'bastet:actualizar-bastet' producto.pk %}">Editar</a> |
+        <a href="{% url 'bastet:eliminar-bastet' producto.pk %}">Eliminar</a>
+      </li>
+    {% empty %}
+      <li>No hay productos.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
